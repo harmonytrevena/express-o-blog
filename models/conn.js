@@ -1,9 +1,9 @@
 'use strict'
 
-const host = "lallah.db.elephantsql.com";
-const database = "xmacugwe";
-const user = "xmacugwe";
-const password = "Mp7SkJEY12xJRCnSFR1f-Jb2mLrY-BAR";
+const host = "raja.db.elephantsql.com";
+const database = "xrcuvhzu";
+const user = "xrcuvhzu";
+const password = "tloA8o9hUCbI7ERL8S4H7lJgPa9bbwBV";
 
 // Duplicate from here down in every file
 const pgp = require('pg-promise')({
