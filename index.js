@@ -13,12 +13,23 @@ const helmet = require('helmet');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const cookieParser = require('cookie-parser');
+const cors = require("cors");
+
+const corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept"
+};
 
 const app = express();
 
 app.engine('html', es6Renderer);
-app.set('views', './views');
-app.set('view engine', 'html');
+// app.set('views', './views');
+// app.set('view engine', 'html');
 
 app.use(logger);
 app.use(helmet());
@@ -26,6 +37,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser());
+app.use(cors(corsOptions));
 app.use(
     session({
         store: new FileStore(),
