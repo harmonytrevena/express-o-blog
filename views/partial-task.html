@@ -1,0 +1,101 @@
+<section class="section">
+    <div class="hero-body">
+        <img src="/public/images/task.png" alt="Crisp home office">
+    </div>
+</section>
+
+<section class="section">
+    <form action="/tasks" method="POST">
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <p class="control">
+                        <input class="input" type="hidden" name="user_id" value=1>
+                    </p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <p class="control">
+                        <input class="input"type="text" name="task_title" placeholder="Task Name">
+                    </p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <p class="control">
+                        <input class="input" type="text" name="task_details" placeholder="Task details...">
+                    </p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <p class="control">
+                        <input class="input" type="text" name="category" placeholder="Category...">
+                    </p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <p class="control">
+                        <input class="input" type="date" name="due_date" placeholder="Due date?">
+                    </p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <p class="control">
+                        <div class="select is-success">
+                            <select type="boolean" name="task_status">
+                                <option value="False">Not Completed</option>
+                                <option value="True">Completed</option>
+                            </select>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-success" type="submit">Add Task</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+${data.map(task => {
+    return ` 
+        <section class="section">
+            <div class="columns">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title">
+                                ${task.task_title}
+                            </p>
+                            <p class="subtitle">
+                                <ul>
+                                    <li>Category: <strong>${task.category}</strong></li>
+                                    <li>Details: <strong>${task.task_details}</strong></li>                                </ul>
+                            </p>
+                        </div>
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <button class="button is-success">
+                                    <span type="boolean" name="task_status" value="True">Mark Complete</span>
+                                </button>
+                            </p>
+                            <p class="card-footer-item">
+                                <span>
+                                    Task is due <strong>${task.due_date}</strong>
+                                </span>
+                            </p>
+                        </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+`}).join('')}
