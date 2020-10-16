@@ -6,7 +6,7 @@ const user = "xrcuvhzu";
 const password = "tloA8o9hUCbI7ERL8S4H7lJgPa9bbwBV";
 
 // Duplicate from here down in every file
-const pgp = require('pg-promise')({
+const pgp = require("pg-promise")({
     query: function (event) {
         console.log("QUERY: ", event.query);
     }

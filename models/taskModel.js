@@ -1,5 +1,5 @@
 'use strict'
-const db = require('./conn');
+const db = require("./conn");
 
 class TaskList {
     constructor(task_title, task_details, category, due_date, task_status) {
@@ -20,7 +20,7 @@ class TaskList {
     }
     static async getById(task_id) {
         try {
-          const response = await db.one(`SELECT * FROM posts WHERE id = ${task_id}`);
+          const response = await db.one(`SELECT * FROM task WHERE id = ${task_id}`);
           return response;
         } catch (err) {
           return err.message;
@@ -36,7 +36,7 @@ class TaskList {
         }
     }
     static async updateTask(id, column, task_details) {
-        const query = `UPDATE posts SET ${column} = ${task_details} WHERE id = '${id}'`;
+        const query = `UPDATE task SET ${column} = ${task_details} WHERE id = '${id}'`;
         try {
           const response = await db.result(query);
           return response;
@@ -46,7 +46,7 @@ class TaskList {
     }
     static async removeTask(task_id) {
         try {
-          const response = await db.result(`DELETE FROM posts WHERE id = ${task_id}`);
+          const response = await db.result(`DELETE FROM task WHERE id = ${task_id}`);
           return response;
         } catch (err) {
           return err.message;
